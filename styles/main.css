@@ -1,0 +1,392 @@
+/* Delhi Metro Shortest Path Visualizer - Custom Styles */
+
+/* ── Base & Typography ─────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+.main {
+    font-family: 'Space Grotesk', sans-serif;
+    background: #0f1117;
+    color: #e8eaf0;
+}
+
+/* ── Metric Cards ───────────────────────────────────────────────────────────── */
+.metric-card {
+    background: linear-gradient(135deg, #1a1f35 0%, #16213e 100%);
+    border: 1px solid #2d3561;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent-color, #00d2ff);
+    border-radius: 16px 16px 0 0;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 210, 255, 0.15);
+}
+
+.metric-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent-color, #00d2ff);
+    line-height: 1;
+    margin: 8px 0;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #8892b0;
+    font-weight: 600;
+}
+
+.metric-icon {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+/* ── Metro Ticket Card ──────────────────────────────────────────────────────── */
+.ticket-card {
+    background: linear-gradient(135deg, #1a1f35 0%, #0d1b2a 100%);
+    border: 1px solid #2d3561;
+    border-radius: 20px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    max-width: 500px;
+    margin: 0 auto;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.ticket-header {
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ticket-header-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ticket-logo {
+    font-size: 1.6rem;
+}
+
+.ticket-body {
+    padding: 24px;
+}
+
+.ticket-route {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.ticket-station {
+    flex: 1;
+}
+
+.ticket-station-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #8892b0;
+    margin-bottom: 4px;
+}
+
+.ticket-station-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #e8eaf0;
+}
+
+.ticket-arrow {
+    font-size: 1.4rem;
+    color: #00d2ff;
+    flex-shrink: 0;
+}
+
+.ticket-divider {
+    border: none;
+    border-top: 1px dashed #2d3561;
+    margin: 16px 0;
+    position: relative;
+}
+
+.ticket-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.ticket-stat {
+    text-align: center;
+    padding: 10px;
+    background: rgba(0, 210, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 210, 255, 0.1);
+}
+
+.ticket-stat-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #00d2ff;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.ticket-stat-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #8892b0;
+    margin-top: 2px;
+}
+
+.ticket-footer {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 12px 24px;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #636e72;
+    letter-spacing: 0.05em;
+}
+
+/* ── Step Cards for Dijkstra ────────────────────────────────────────────────── */
+.step-card {
+    background: #1a1f35;
+    border: 1px solid #2d3561;
+    border-left: 4px solid #00d2ff;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 10px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.step-badge {
+    background: #00d2ff;
+    color: #0f1117;
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.step-node {
+    color: #00b894;
+    font-weight: 600;
+}
+
+.step-update {
+    background: rgba(0, 210, 255, 0.05);
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin: 4px 0;
+    border: 1px solid rgba(0, 210, 255, 0.1);
+}
+
+/* ── Path Display ───────────────────────────────────────────────────────────── */
+.path-display {
+    background: #1a1f35;
+    border: 1px solid #2d3561;
+    border-radius: 14px;
+    padding: 20px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.path-station {
+    display: inline-block;
+    background: rgba(0, 210, 255, 0.1);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    border-radius: 20px;
+    padding: 5px 12px;
+    margin: 3px;
+    font-size: 0.85rem;
+    color: #00d2ff;
+}
+
+.path-station.interchange {
+    background: rgba(253, 121, 168, 0.15);
+    border-color: rgba(253, 121, 168, 0.4);
+    color: #fd79a8;
+}
+
+.path-station.source {
+    background: rgba(0, 184, 148, 0.15);
+    border-color: rgba(0, 184, 148, 0.5);
+    color: #00b894;
+    font-weight: 700;
+}
+
+.path-station.destination {
+    background: rgba(214, 48, 49, 0.15);
+    border-color: rgba(214, 48, 49, 0.5);
+    color: #d63031;
+    font-weight: 700;
+}
+
+/* ── Comparison Table ───────────────────────────────────────────────────────── */
+.comparison-card {
+    background: #1a1f35;
+    border: 1px solid #2d3561;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+}
+
+.comparison-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #8892b0;
+    margin-bottom: 16px;
+}
+
+.comparison-value {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.winner-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, #00b894, #00d2ff);
+    color: #0f1117;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+}
+
+/* ── Sidebar Styles ─────────────────────────────────────────────────────────── */
+.sidebar-header {
+    text-align: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #2d3561;
+    margin-bottom: 16px;
+}
+
+.sidebar-logo {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.sidebar-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #00d2ff;
+    letter-spacing: 0.05em;
+}
+
+.sidebar-subtitle {
+    font-size: 0.7rem;
+    color: #8892b0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ── Section Headers ────────────────────────────────────────────────────────── */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 24px 0 16px;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #e8eaf0;
+}
+
+.section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #2d3561, transparent);
+}
+
+/* ── Algorithm Explanation ──────────────────────────────────────────────────── */
+.algo-card {
+    background: linear-gradient(135deg, #1a1f35 0%, #16213e 100%);
+    border: 1px solid #2d3561;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 12px 0;
+}
+
+.algo-step {
+    display: flex;
+    gap: 16px;
+    margin: 12px 0;
+}
+
+.algo-step-num {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #0f1117;
+    flex-shrink: 0;
+}
+
+.algo-step-text {
+    padding-top: 4px;
+    color: #8892b0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* ── Tags / Badges ──────────────────────────────────────────────────────────── */
+.tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 2px;
+}
+
+.tag-blue { background: rgba(52, 152, 219, 0.2); color: #3498db; border: 1px solid rgba(52, 152, 219, 0.3); }
+.tag-green { background: rgba(0, 184, 148, 0.2); color: #00b894; border: 1px solid rgba(0, 184, 148, 0.3); }
+.tag-red { background: rgba(214, 48, 49, 0.2); color: #d63031; border: 1px solid rgba(214, 48, 49, 0.3); }
+.tag-yellow { background: rgba(253, 203, 110, 0.2); color: #fdcb6e; border: 1px solid rgba(253, 203, 110, 0.3); }
